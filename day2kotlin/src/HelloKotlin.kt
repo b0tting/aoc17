@@ -14,7 +14,7 @@ fun readFile(filename : String) : MutableList<List<Int>>{
     val spreadsheet = mutableListOf<List<Int>>()
     val bufferedReader: BufferedReader = File(filename).bufferedReader()
     bufferedReader.useLines{lines->lines.forEach {
-        val currline = it.split("\t");
+        val currline = it.split("\t")
         var currLineInt = currline.map {
             it.toInt()
         }
