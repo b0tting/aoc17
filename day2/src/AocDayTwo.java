@@ -27,8 +27,9 @@ public class AocDayTwo {
         }
         List<int[]> ints = new ArrayList<int[]>();
         for (String line : lines) {
-            int[] numbers = Arrays.asList(line.split("\\s+")).stream().mapToInt(Integer::parseInt).toArray();
-            ints.add(numbers);
+            //int[] numbers = Arrays.asList(line.split("\\s+")).stream().mapToInt(Integer::parseInt).toArray();
+//            ints.add(numbers);
+            break;
         }
         this.ints = ints;
     }
