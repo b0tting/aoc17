@@ -32,34 +32,78 @@ def get_xy(distance):
             return steps;
 
 
-## Dat was ook meteen potverdomme het einde van de pret!
-## Poging 3.
-class Cell():
-    def __init__(self, value, x, y):
-        self.x = x
-        self.y = y
-        self.value = value
-
-
 def get_second_distance_from_center(distance):
-    current = 0
-    current_len = 0
-    valueslist = []
-    while(current < distance):
-        if first:
-            current_len += 1
-            first = False
+    arr = [[0 for col in range(19)] for row in range(19)]
+    arr[9][9] = 1
+    arr[9][10] = 1
+    arr[8][10] = 2
+    count = 0
+    currenty = 8
+    currentx = 10
+    while count < 110:
+        newval = 0
+        if(currenty > (len(arr) / 2)):
+            ## Snaking back up
+            if(arr[currenty - 1][currentx] == 0):
+                currenty -= 1;
+                newval += arr[currenty - 1][currentx -1];
+                newval += arr[currenty][currentx-1];
+                newval += arr[currenty + 1][currentx-1];
+                newval += arr[currenty + 1][currentx];
+            ## Snalong right
+            elif(arr[currenty][currentx + 1] == 0):
+                currentx += 1;
+                newval += arr[currenty][currentx -1];
+                newval += arr[currenty -1][currentx-1];
+                newval += arr[currenty -1][currentx];
+                newval += arr[currenty - 1][currentx + 1];
+            ## Snaking down
+            else:
+                currenty += 1;
+                newval += arr[currenty -1 ][currentx];
+                newval += arr[currenty -1][currentx + 1];
+                newval += arr[currenty][currentx + 1];
+                newval += arr[currenty + 1][currentx + 1];
+        ## Top half of spiral
         else:
-            first = True
+            ## Snaking back down
+            if(arr[currenty + 1][currentx] == 0):
+                currenty += 1;
+                newval += arr[currenty -1 ][currentx];
+                newval += arr[currenty -1][currentx + 1];
+                newval += arr[currenty][currentx + 1];
+                newval += arr[currenty + 1][currentx + 1];
+            ## Snaking left
+            elif(arr[currenty][currentx - 1] == 0):
+                currentx -= 1;
+                newval += arr[currenty][currentx + 1];
+                newval += arr[currenty + 1][currentx + 1];
+                newval += arr[currenty + 1][currentx];
+                newval += arr[currenty + 1][currentx - 1];
+            ## Snaking up
+            else:
+                currenty -= 1;
+                newval += arr[currenty - 1][currentx - 1];
+                newval += arr[currenty][currentx - 1];
+                newval += arr[currenty + 1][currentx - 1];
+                newval += arr[currenty + 1][currentx];
+        arr[currenty][currentx] = newval
+        print_arr(arr)
+        if(newval > distance):
+            print("NEWVAL IS " + str(newval))
+            break;
 
-        ## Get my current X,Y
-        my_x = my_x
+def print_arr(arr):
+    result = ""
+    for rows in arr:
+        for col in rows:
+            result += str(col).ljust(10)
+        result += "\n"
+    print result
 
 
-        if(current >= distance):
-            steps = current_len - (current - distance)
-            return steps;
 
 
-print(get_distance_from_center(289326))
+##print(get_distance_from_center(289326))
 print(get_second_distance_from_center(289326))
+
