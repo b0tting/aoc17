@@ -25,7 +25,6 @@ while(going):
     banks = redistribute(banks)
     for old_bank in old_banks:
         if(old_bank == banks):
-
             print("Found at " + str(count - old_banks.index(old_bank) + 1) + " cycles ago" )
             going = False
             break

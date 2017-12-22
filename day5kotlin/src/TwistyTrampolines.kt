@@ -20,6 +20,7 @@ fun stepCount(trampolines : MutableList<Int>) : Int {
     var index = 0
     while(index < trampolines.size ) {
         var next = index + trampolines[index]
+        trampolines[index] =
         if(trampolines[index] >= 3) {
             trampolines[index]--
         } else {

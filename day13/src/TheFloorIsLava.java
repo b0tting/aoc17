@@ -9,11 +9,11 @@ public class TheFloorIsLava {
     public static void main(String[] args) {
         // Prints "Hello, World" to the terminal window.
         Firewall fw = new Firewall();
-        fw.fill("e:\\drive\\intellij\\aoc17\\day13\\input.txt");
+        fw.fill("e:\\drive\\intellij\\aoc17\\day13\\input2.txt");
 
-        int delay = 10;
+        int delay = 0;
         int severity = 1;
-        while(severity != 0) {
+        while(severity != 0 && delay < 12) {
             if(delay % 2 == 1) {
                 delay++;
                 continue;
